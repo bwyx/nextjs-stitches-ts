@@ -1,21 +1,16 @@
-import React from 'react'
 import { Header, Footer } from '~/components'
+import { styled } from '~/styles'
 
-import { stack } from '~/styles/primitives'
-
-const main = stack({
-  dir: 'col',
-  grow: true,
-  css: {
-    overflow: 'hidden'
-  }
+const Main = styled('main', {
+  display: 'flex',
+  flexGrow: 1
 })
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      <main className={main}>{children}</main>
+      <Main>{children}</Main>
       <Footer />
     </>
   )

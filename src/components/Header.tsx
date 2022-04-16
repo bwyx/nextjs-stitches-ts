@@ -1,27 +1,20 @@
 import Link from 'next/link'
+import { Container } from '~/components'
+import { styled } from '~/styles'
 
-import { container, text } from '~/styles/primitives'
-
-const styles = {
-  container: container({
-    size: 'small'
-  }),
-  logo: text({
-    weight: 'bold',
-    css: {
-      xColor: '$brand'
-    }
-  })
-}
+const Title = styled('a', {
+  xColor: '$brand',
+  fontWeight: '$bold'
+})
 
 const Header = () => {
   return (
     <header>
-      <div className={styles.container}>
-        <Link href="/">
-          <a className={styles.logo}>Next.js + Stitches</a>
+      <Container size="small">
+        <Link href="/" passHref>
+          <Title>Next.js + Stitches</Title>
         </Link>
-      </div>
+      </Container>
     </header>
   )
 }

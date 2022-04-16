@@ -1,15 +1,9 @@
-import { container } from '~/styles/primitives'
-
-const styles = {
-  container: container({
-    size: 'small'
-  })
-}
+import { Container } from '~/components'
 
 const Footer = () => {
   return (
     <footer>
-      <div className={styles.container}>Footer</div>
+      <Container size="small">Footer</Container>
     </footer>
   )
 }

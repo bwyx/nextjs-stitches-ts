@@ -2,15 +2,9 @@ import Head from 'next/head'
 
 import useTheme from '~/hooks/useTheme'
 import { attachMainLayout } from '~/layouts/Main.layout'
-import { container } from '~/styles/primitives'
+import { Container } from '~/components'
 
 import type { Page } from '~/types'
-
-const styles = {
-  container: container({
-    size: 'small'
-  })
-}
 
 function ToggleTheme() {
   const { theme, toggleTheme } = useTheme()
@@ -24,7 +18,7 @@ function ToggleTheme() {
 
 const Home: Page = () => {
   return (
-    <div className={styles.container}>
+    <Container size="small">
       <Head>
         <title>Next.js + Stitches</title>
         <meta name="description" content="Next.js + Stitches Boilerplate" />
@@ -32,7 +26,7 @@ const Home: Page = () => {
       </Head>
       Home
       <ToggleTheme />
-    </div>
+    </Container>
   )
 }
 
