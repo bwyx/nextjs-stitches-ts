@@ -1,6 +1,9 @@
 import { globalCss } from '~/styles'
+import { colorScheme } from './themes'
 
 export const globalStyles = globalCss({
+  ':root': { colorScheme },
+
   // Fonts
   '@font-face': [
     {
@@ -38,6 +41,8 @@ export const globalStyles = globalCss({
     fontFeatureSettings: "'cv02','cv03','cv04','cv11'"
   },
   body: {
+    xColor: '$fg1',
+    xBackground: '$bg',
     margin: 0,
     fontFamily: '$sans',
     fontSize: '$base',

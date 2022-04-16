@@ -1,13 +1,25 @@
 import Head from 'next/head'
 
+import useTheme from '~/hooks/useTheme'
 import { attachMainLayout } from '~/layouts/Main.layout'
 import { container } from '~/styles/primitives'
-import { Page } from '~/types'
+
+import type { Page } from '~/types'
 
 const styles = {
   container: container({
     size: 'small'
   })
+}
+
+function ToggleTheme() {
+  const { theme, toggleTheme } = useTheme()
+
+  return (
+    <button type="button" onClick={toggleTheme}>
+      {theme}
+    </button>
+  )
 }
 
 const Home: Page = () => {
@@ -19,6 +31,7 @@ const Home: Page = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       Home
+      <ToggleTheme />
     </div>
   )
 }

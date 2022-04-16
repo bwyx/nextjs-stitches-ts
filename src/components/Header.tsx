@@ -7,7 +7,10 @@ const styles = {
     size: 'small'
   }),
   logo: text({
-    weight: 'bold'
+    weight: 'bold',
+    css: {
+      xColor: '$brand'
+    }
   })
 }
 

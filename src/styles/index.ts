@@ -1,8 +1,9 @@
 import { createStitches } from '@stitches/core'
 
 import type * as Stitches from '@stitches/core'
+import type { RGBTheme } from '~/styles/themes'
 
-type RGB = Stitches.ScaleValue<'rgb'>
+type RGBColor = Stitches.ScaleValue<'rgb'> | `$${RGBTheme}`
 type Opacity = Stitches.PropertyValue<'opacity'>
 type Space = Stitches.ScaleValue<'space'> | `-$${keyof typeof space}` | 'auto'
 
@@ -49,16 +50,16 @@ export const { css, keyframes, getCssText, globalCss, createTheme, config } =
     theme: {
       space,
       rgb: {
-        'slate-50': '248 250 252', //#f8fafc
-        'slate-100': '241 245 249', //#f1f5f9
-        'slate-200': '226 232 240', //#e2e8f0
-        'slate-300': '203 213 225', //#cbd5e1
-        'slate-400': '148 163 184', //#94a3b8
-        'slate-500': '100 116 139', //#64748b
-        'slate-600': '71 85 105', //#475569
-        'slate-700': '51 65 85', //#334155
-        'slate-800': '30 41 59', //#1e293b
-        'slate-900': '15 23 42' //#0f172a
+        'text-50': '255 255 255', // #ffffff
+        'text-100': '242 243 242', // #f2f3f2
+        'text-200': '217 218 216', // #d9dad8
+        'text-300': '191 193 189', // #bfc1bd
+        'text-400': '166 168 163', // #a6a8a3
+        'text-500': '140 144 137', // #8c9089
+        'text-600': '112 116 109', // #70746d
+        'text-700': '84 87 82', // #545752
+        'text-800': '56 58 54', // #383a36
+        'text-900': '28 29 27' // #1c1d02
       },
       fonts: {
         sans: "Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol'",
@@ -151,8 +152,8 @@ export const { css, keyframes, getCssText, globalCss, createTheme, config } =
         50: '50'
       },
       borderWidths: {
-        default: '1px',
         0: '0',
+        1: '1px',
         2: '2px',
         4: '4px',
         8: '8px'
@@ -167,6 +168,22 @@ export const { css, keyframes, getCssText, globalCss, createTheme, config } =
       motionSafe: '(prefers-reduced-motion: no-preference)'
     },
     utils: {
+      xColor: (color: RGBColor) => ({
+        '$$color-opacity': 1,
+        color: `rgb($rgb${color} / $$color-opacity)`
+      }),
+      xColorOpacity: (opacity: Opacity) => ({
+        '$$color-opacity': `${opacity} !important`
+      }),
+
+      xBackground: (color: RGBColor) => ({
+        '$$bg-opacity': 1,
+        backgroundColor: `rgb($rgb${color} / $$bg-opacity)`
+      }),
+      xBackgroundOpacity: (opacity: Opacity) => ({
+        '$$bg-opacity': `${opacity} !important`
+      }),
+
       // Abbreviated margin properties
       mt: (value: Space) => ({
         marginTop: value
