@@ -21,9 +21,9 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-// eslint-disable-next-line react/display-name
-export const attachMainLayout = () => (page: React.ReactNode) => {
-  return <MainLayout>{page}</MainLayout>
-}
+export const attachMainLayout = () =>
+  function WithMainLayout(page: React.ReactNode) {
+    return <MainLayout>{page}</MainLayout>
+  }
 
 export default MainLayout
